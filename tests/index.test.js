@@ -4,7 +4,8 @@ const {
   total,
   gibberish,
   mergeSort,
-  calculator
+  calculator,
+  dogHome
 } = require("../src/index.js");
 
 test("increase", function() {
@@ -52,4 +53,56 @@ test("calculator", function() {
   expect(inner(2, 3, "-")).toBe(-1);
   expect(inner(2, 3, "/")).toBe(0.6666666666666666);
   expect(inner(2, 3, "*")).toBe(6);
+});
+
+// test.skip("dogHome", function() {
+//   const inner = dogHome();
+//   const expected = {
+//     Shoreditch: [{ dog: {}, doga: {} }]
+//   };
+//   const spotTheDog = {
+//     name: "Spot",
+//     breed: "Camel",
+//     colour: "camel",
+//     location: "Shoreditch"
+//   };
+//   const sportTheDog = {
+//     name: "Sport",
+//     breed: "Camel",
+//     colour: "camel",
+//     location: "Cornwal"
+//   };
+
+//   expect(inner({ spotTheDog, sportTheDog })).toBe(expected);
+// });
+
+test("dogHome", function() {
+  const { houseDog, getDogsByLoaction } = dogHome();
+  const expected = [
+    {
+      name: "Spot",
+      breed: "Camel",
+      colour: "camel",
+      location: "Shoreditch"
+    }
+  ];
+
+  const spotTheDog = {
+    name: "Spot",
+    breed: "Camel",
+    colour: "camel",
+    location: "Shoreditch"
+  };
+  const sportTheDog = {
+    name: "Sport",
+    breed: "Camel",
+    colour: "camel",
+    location: "Cornwal"
+  };
+  houseDog(spotTheDog);
+  houseDog(sportTheDog);
+  houseDog(sportTheDog);
+  houseDog(sportTheDog);
+
+  expect(getDogsByLoaction("Shoreditch")).toEqual(expected);
 });

@@ -68,25 +68,51 @@ function calculator() {
       case "+":
         total = numA + numB;
         return total;
-        break;
+
       case "-":
         total = numA - numB;
         return total;
-        break;
+
       case "*":
         total = numA * numB;
         return total;
-        break;
+
       case "/":
         total = numA / numB;
         return total;
-        break;
+
       default:
         return "Camel says no";
-        break;
     }
   }
   return inner;
 }
 
-module.exports = { increase, double, total, gibberish, mergeSort, calculator };
+function dogHome() {
+  const allTheDogs = {};
+
+  return {
+    houseDog(dogToAdd) {
+      allTheDogs[dogToAdd.location]
+        ? (allTheDogs[dogToAdd.location] = [
+            ...allTheDogs[dogToAdd.location],
+            dogToAdd
+          ])
+        : (allTheDogs[dogToAdd.location] = [dogToAdd]);
+      return allTheDogs;
+    },
+    getDogsByLoaction(dogLocation) {
+      return allTheDogs[dogLocation];
+    }
+  };
+}
+
+module.exports = {
+  increase,
+  double,
+  total,
+  gibberish,
+  mergeSort,
+  calculator,
+  dogHome
+};
