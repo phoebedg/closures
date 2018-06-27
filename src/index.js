@@ -22,4 +22,71 @@ function double() {
   return inner;
 }
 
-module.exports = { increase, double };
+function total(numberIn) {
+  let number = numberIn;
+
+  function inner(arrNumbers) {
+    number = arrNumbers.reduce((acc, item) => {
+      return (acc = acc + item);
+    }, number);
+    return number;
+  }
+  return inner;
+}
+
+function gibberish() {
+  let emptyStr = "";
+
+  function inner(strOrArrStrs) {
+    if (typeof strOrArrStrs === "string") {
+      emptyStr = `${emptyStr} ${strOrArrStrs}`;
+    } else if (Array.isArray(strOrArrStrs)) {
+      strOrArrStrs.map(mouse => (emptyStr = `${emptyStr} . ${mouse}`));
+    }
+    return emptyStr;
+  }
+  return inner;
+}
+
+function mergeSort() {
+  let emptyArr = [];
+
+  function inner(number) {
+    const numIsObj = { [number]: "" };
+    emptyArr.map(item => (numIsObj[item] = { [item]: "" }));
+    emptyArr = [...Object.keys(numIsObj)];
+    return emptyArr[emptyArr.length - 1];
+  }
+  return inner;
+}
+
+function calculator() {
+  let total;
+
+  function inner(numA, numB, operator) {
+    switch (operator) {
+      case "+":
+        total = numA + numB;
+        return total;
+        break;
+      case "-":
+        total = numA - numB;
+        return total;
+        break;
+      case "*":
+        total = numA * numB;
+        return total;
+        break;
+      case "/":
+        total = numA / numB;
+        return total;
+        break;
+      default:
+        return "Camel says no";
+        break;
+    }
+  }
+  return inner;
+}
+
+module.exports = { increase, double, total, gibberish, mergeSort, calculator };
